@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="cursorTrail"></div>
+<div id="stars"></div>
+<div id="confettiContainer"></div>
+
+<!-- CINEMATIC INTRO -->
+<section id="introScreen" class="intro-screen">
+  <h1>✨ Something magical is waiting for you... ✨</h1>
+  <button id="startIntroBtn" class="main-btn">Start Magic 💖</button>
+</section>
+
+<!-- LOCK SCREEN -->
+<section id="lockScreen" class="lock-screen hidden">
+  <div class="card">
+    <h1>🎁 Birthday Surprise Locked 🎁</h1>
+    <p class="unlock-text">Surprise unlocks soon...</p>
+
+    <h3 id="birthdayDateText"></h3>
+
+    <div class="countdown">
+      <div><span id="days">00</span><p>Days</p></div>
+      <div><span id="hours">00</span><p>Hours</p></div>
+      <div><span id="minutes">00</span><p>Minutes</p></div>
+      <div><span id="seconds">00</span><p>Seconds</p></div>
+    </div>
+
+    <div id="passwordBox" class="password-box hidden">
+      <p>Enter secret nickname to unlock 💝</p>
+      <input id="secretInput" type="text" placeholder="Enter nickname">
+      <button id="checkPasswordBtn" class="main-btn">Unlock</button>
+      <p id="passwordMessage"></p>
+    </div>
+
+    <button id="openSurpriseBtn" class="main-btn hidden">Open Surprise 💝</button>
+  </div>
+</section>
+
+<!-- MAIN SURPRISE -->
+<main id="mainContent" class="main-content hidden">
+
+  <!-- STEP 1 NAME REVEAL -->
+  <section class="surprise-step active">
+    <div class="card">
+      <h1>🎉 Happy Birthday My Love😍 🎉</h1>
+      <h2 id="nameReveal"></h2>
+      <h3 id="typingText"></h3>
+      <button class="next-btn">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 2 QUESTIONS -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>💕 Cute Birthday Questions 💕</h1>
+
+      <div class="question">
+        <p>Are you ready for your surprise?</p>
+        <button onclick="answerQuestion(this)">Yes 😍</button>
+        <button onclick="answerQuestion(this)">Very Ready 💖</button>
+      </div>
+
+      <div class="question">
+        <p>Do you know how special you are?</p>
+        <button onclick="answerQuestion(this)">Maybe 🥰</button>
+        <button onclick="answerQuestion(this)">Now I know 😄</button>
+      </div>
+
+      <p id="questionMessage"></p>
+      <button id="questionNext" class="next-btn hidden">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 LOVE METER -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>💖 Love Meter 💖</h1>
+      <div class="meter">
+        <div id="meterFill"></div>
+      </div>
+      <h2 id="meterText">0%</h2>
+      <button id="startMeterBtn" class="main-btn">Start Meter</button>
+      <button id="meterNext" class="next-btn hidden">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 4 CHAT -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>💬 Cute Chat 💬</h1>
+      <div id="chatBox" class="chat-box"></div>
+      <button id="startChatBtn" class="main-btn">Start Chat</button>
+      <button id="chatNext" class="next-btn hidden">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 5 POLAROID GALLERY -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>📸 Our Unforgettable Memories 📸</h1>
+
+      <div class="polaroid-gallery">
+        <div class="polaroid"><img src="images/photo1.jpeg"><p>Happy Moment ✨</p></div>
+        <div class="polaroid"><img src="images/photo2.jpeg"><p>Beautiful Soul 🥰</p></div>
+        <div class="polaroid"><img src="images/photo6.jpeg"><p>Magical Moment 🌺</p></div>
+        <div class="polaroid"><img src="images/photo4.jpeg"><p>Angel Energy 👼</p></div>
+             <div class="polaroid"><img src="images/photo12.jpeg"><p>Best Memory 📸</p></div>
+        <div class="polaroid"><img src="images/photo7.jpeg"><p>Favorite Person 💕</p></div>
+        <div class="polaroid"><img src="images/photo8.jpeg"><p>Best Smile 😊</p></div>
+        <div class="polaroid"><img src="images/photo11.jpeg"><p>Forever Special 💞</p></div>
+             <div class="polaroid"><img src="images/photo10.jpeg"><p>Heart Stealer 💘</p></div>
+        <div class="polaroid"><img src="images/photo9.jpeg"><p>Cutest Laugh 😄</p></div>
+        <div class="polaroid"><img src="images/photo5.jpeg"><p>Sweet Memory 💖</p></div>
+        <div class="polaroid"><img src="images/photo3.jpeg"><p>Lovely Vibes 🌈</p></div>
+      </div>
+
+      <button class="next-btn">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 6 FLIP CARDS -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>💌 Flip Card Memories 💌</h1>
+
+      <div class="flip-container">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">💖 Memory 1</div>
+            <div class="flip-back">5th May 2022 🌸
+It started with just a “hello,” but that small moment changed everything beautifully.
+That first conversation became the beginning of memories, smiles, and feelings I never want to lose ❤️</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">💘 Memory 2</div>
+            <div class="flip-back">November 2022 💕 
+               Our first trip together became one of the most unforgettable moments of my life. 
+               Sitting beside you in the bus, holding those beautiful moments close, and stealing a little kiss became one of my happiest memories ever ❤️</div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">💞 Memory 3</div>
+            <div class="flip-back">14th April 2024 🌙💕
+That birthday night was unforgettable — cutting the cake with you, spending time together till midnight, having dinner, and watching our first movie together in the theater made my heart incredibly happy forever 🎬❤️</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="next-btn">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 7 SLIDESHOW -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>✨ Magical Photos ✨</h1>
+      <div class="slideshow">
+        <img id="slideImage" src="images/photo18.jpeg" alt="Slideshow">
+      </div>
+      <p id="slideCaption">Every smile tells a beautiful story 💖</p>
+      <button class="next-btn">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 8 VIDEO -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>🎥 Memory Video 🎥</h1>
+      <video controls class="memory-video">
+        <source src="video/video.mp4" type="video/mp4">
+      </video>
+      <button class="next-btn">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 9 GIFT -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>🎁 A Gift For You 🎁</h1>
+      <p>Click the gift box.</p>
+
+      <div id="giftBox" class="gift-box">
+        <div class="gift-lid"></div>
+        <div class="gift-body"></div>
+        <div class="gift-ribbon-v"></div>
+        <div class="gift-ribbon-h"></div>
+      </div>
+
+      <div id="giftContent" class="gift-content hidden">
+        <h2>💖 You are the real gift of My Life... 💖</h2>
+        <p>May your life always be filled with endless love, beautiful smiles, true happiness, and great success in every step you take. From our very first conversation on 5th May 2022, to our unforgettable first trip together in November 2022, and the magical birthday memories we created on 14th April 2024, every moment with you has become one of the most precious parts of my life ❤️
+
+Thank you for giving me memories full of laughter, care, late-night talks, warm hugs, sweet kisses, movie dates, midnight celebrations, and countless beautiful feelings. No matter how much time passes, these moments will always stay close to my heart, because life feels more special and meaningful whenever I am with you. I never leave your side I'm gonna stay forever with you and love you😘 more than you think... Happy Birthday to My Love❤️.. ✨</p>
+      </div>
+
+      <button id="giftNext" class="next-btn hidden">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 10 ENVELOPE -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>💌 A Letter For You 💌</h1>
+      <p>Click the envelope.</p>
+
+      <div id="envelope" class="envelope">
+        <div class="flap"></div>
+        <div class="letter">
+          My Love ❤️,
+
+Sometimes I wonder how my life became so beautiful, and every answer somehow leads back to you. You walked into my world quietly, but your presence changed everything in the most wonderful way. Your smile brings peace to my heart, your voice feels like comfort, and your love makes every ordinary moment feel special.
+
+Thank you for caring for me, understanding me, and standing beside me through every mood, every smile, and every difficult day. You have become my safe place, my happiness, and one of the most precious parts of my life. No matter how busy life gets, just thinking about you is enough to make my day brighter.
+
+I may not always express my feelings perfectly, but I hope you always know how deeply important you are to me. I admire your heart, your kindness, your strength, and the beautiful way you make people around you feel loved.
+
+I wish for your life to always be filled with happiness, success, peace, endless smiles, and all the love your heart deserves. No matter what happens, a part of my heart will always belong to you.
+
+Thank you for being you, and thank you for making my life more meaningful just by being in it.
+
+Forever yours ❤️
+💖
+        </div>
+      </div>
+
+      <button id="letterNext" class="next-btn hidden">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 11 BALLOONS -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>🎈 Pop the Balloons 🎈</h1>
+      <div class="balloons">
+        <button onclick="popBalloon(this)">🎈</button>
+        <button onclick="popBalloon(this)">🎈</button>
+        <button onclick="popBalloon(this)">🎈</button>
+        <button onclick="popBalloon(this)">🎈</button>
+      </div>
+      <p id="balloonWish"></p>
+      <button id="balloonNext" class="next-btn hidden">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 12 VOICE MESSAGE -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>🎧 Special Music For You😘 🎧</h1>
+      <audio controls>
+        <source src="music/guna.mpeg" type="audio/mpeg">
+      </audio>
+      <button class="next-btn">Next Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- STEP 13 CAKE -->
+  <section class="surprise-step">
+    <div class="card">
+      <h1>🎂 Birthday Cake 🎂</h1>
+
+      <div id="cake" class="cake">
+        <div class="flame"></div>
+        <div class="candle"></div>
+        <div class="cake-layer top"></div>
+        <div class="cake-layer middle"></div>
+        <div class="cake-layer bottom"></div>
+        <div class="knife"></div>
+      </div>
+
+      <button id="cutCakeBtn" class="main-btn">Cut Cake 🍰</button>
+      <p id="cakeMessage"></p>
+      <button id="cakeNext" class="next-btn hidden">Final Surprise ➜</button>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="surprise-step">
+    <div class="card final-card">
+      <h1>🎆 Happy Birthday 🎆</h1>
+      <p>
+        Our Love Story ❤️
+
+I still remember the very first time I saw you in college. Among so many people, my eyes somehow stopped only at you. I don’t know what magic it was, but from that very first moment, my heart quietly started falling in love with you. At that time, I never imagined that one day you would become such an important part of my life.
+
+Then came **5th November 2022**, the day I gathered the courage to text you for the first time. What started as a simple message slowly became endless conversations. Day and night, we talked about everything — happiness, problems, dreams, silly things, serious things, and every little feeling in our hearts. Without even realizing it, we became closer and closer every single day.
+
+One of the most unforgettable moments of my life was our first trip together in November 2022. Sitting beside you during that journey felt so peaceful and special. And that sweet kiss in the bus… that moment is still one of the most beautiful memories my heart carries forever. From that day, my love for you only became deeper.
+
+You have always made me feel loved in the purest way. Every special moment with you became precious — the gifts you gave me, the dresses you bought for me, the care you showed, and the little efforts that meant the whole world to me. Those are not just gifts to me; they are memories filled with your love.
+
+What makes our relationship beautiful is that we became best friends before becoming lovers. We shared good moments, bad moments, fights, laughter, tears, dreams, and countless unforgettable memories together. No matter what happened, we always stayed together and understood each other. That connection is something truly rare and special.
+
+Even today, after everything we have been through together, my heart still chooses you every single day. I want us to keep talking about everything openly — the good, the bad, the happy, the painful — because that is what makes our bond so real and strong.
+
+And no matter what life brings in the future, I never want us to leave each other’s side. I want our love to stay forever, until our last breath, with the same care, madness, friendship, and endless love that brought us together in the beginning.
+
+You are not just my love.
+You are my comfort, my happiness, my safe place, and one of the greatest blessings of my life ❤️
+
+And today, on your special day, I just want to thank life for bringing you into my world. Happy Birthday to the most beautiful person in my life. May your smile always shine brightly, may your heart always stay happy, and may all your dreams come true. I promise to stand beside you, support you, love you, and create countless more beautiful memories together.
+
+No matter how many birthdays come and go, my love for you will only grow stronger with time. Thank you for being my person, my peace, and my forever ❤️🎂✨
+
+      </p>
+      <h2>💖 Stay happy, stay blessed, keep smiling 💖</h2>
+
+      <button onclick="downloadCard()" class="main-btn">Download Birthday Card</button>
+      <button onclick="replaySurprise()" class="main-btn">🔄 Replay Surprise</button>
+    </div>
+  </section>
+
+</main>
+
+<audio id="bgMusic" loop>
+  <source src="music/birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" class="music-btn">🔊 Play Music</button>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+          <!-- <img src="images/photo1.jpeg">
+          <img src="images/photo2.jpeg">
+          <img src="images/photo6.jpeg">
+          <img src="images/photo4.jpeg">
+          <img src="images/photo12.jpeg">
+          <img src="images/photo7.jpeg">
+          <img src="images/photo8.jpeg">
+          <img src="images/photo11.jpeg">
+          <img src="images/photo10.jpeg">
+          <img src="images/photo9.jpeg">
+          <img src="images/photo5.jpeg">
+          <img src="images/photo3.jpeg"> -->
