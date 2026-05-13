@@ -1,6 +1,6 @@
 /* CUSTOMIZATION */
 
-const birthdayDate = new Date("August 14, 2026 11:59:59 PM");
+const birthdayDate = new Date("August 14, 2026 12:00:00 AM");
 const secretPassword = "gunasri";
 const birthdayName = "Sharanya 💖";
 
